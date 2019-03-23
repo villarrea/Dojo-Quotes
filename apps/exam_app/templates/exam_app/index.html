@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login and Registration</title>
+    {% load static %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'exam_app/css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>Registration</h1>
+
+        <form action= '/process' method="POST">
+            {% csrf_token %}
+            <p class = "a">First Name: <input type="text" name="first_name"></p><br>
+            <p class = "b">Last Name: <input type="text" name="last_name"></p><br>
+            <p class = "c">Email: <input type="text" name="email"> </p><br>
+            <p class = "d">Password: <input type="password" name="password"></p><br>
+            <p>*Password should be at least 8 characters</p>
+            <p class = "e">Confirm Password: <input type="password" name="confirmed_password"></p><br>
+            <p class = "f">Date of Birth: <input type="date" name="birthdate"></p><br>
+            <input type="submit" class="button" name="register" value="Register">
+        </form>
+
+    </div>
+
+    <div class="box">
+        <h1>Login</h1>
+
+        <form action = '/login' method= "POST">
+            {% csrf_token %}
+            <p class = "c">Email: <input type="text" name="email"> </p><br>
+            <p class = "d">Password: <input type="text" name="password"></p><br>
+            <input type="submit" class="button" name="login_in" value="Log In">
+        </form>
+
+    </div>
+
+    <div class="errors">
+
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+/* * { border: 1px solid black; } */
+
+body{
+    margin: auto;
+    padding: 20px;
+    width: 1400px;
+    min-height: auto;
+    text-align: left;
+    background-color: teal;
+}
+.container{
+    background-color: antiquewhite;
+    padding: 20px;
+}
+h1{
+    display: inline-block;
+}
+
+h3{
+    color: green;
+}
+h5{
+    border-style: solid;
+    padding: 15px;
+}
+.log_out{
+    color: white;
+    margin: 0 0 0 1168px;
+    text-decoration: underline;
+}
+
+span{
+    color: red;
+    font-weight: bold;
+}

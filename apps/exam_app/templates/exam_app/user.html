@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes</title>
+    {% load static %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'exam_app/css/user.css' %}">
+</head>
+
+<body>
+
+<a class = "log_out" href="/logout">Log off</a><br>
+<a class = "log_out" href="/wall">Dashboard</a><br>
+
+<div class="container">
+
+<h1>Posts by {{user.first_name}}</h1>
+<h3>This user has posted: {{counts}} time(s) </h3>
+
+{% for quote in quotes %}
+    {% if quote.user.id == user.id %}
+    <h5><span>{{quote.author}}:</span> {{quote.message}}</h5>
+    {% endif %}
+{% endfor %}
+
+</div>
+
+</body>
+</html>

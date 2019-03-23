@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+    {% load static %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'exam_app/css/wall.css' %}">
+</head>
+<body>
+
+    <p class = "welcome"> Welcome, {{user.first_name}}</h1>
+    <a class = "log_out" href="/logout">Log off</a>
+    <hr>
+    
+    <div class="container">
+        <div class="top">
+            <div class="message">
+                <h2>Contribute a Quote:</h2>
+                <form action = '/post_quote' method = "POST">
+                    {% csrf_token %}
+
+                    <h5>Quoted By: <input type="text" name="author"></h5>
+                    <textarea class="text_area" name ="quote" value ="text"></textarea>
+
+                    <br>
+                    <input type="submit" class="post_quote" value="Post a quote">
+                </form>
+                <div class="errors">
+
+                        {% if messages %}
+                        <ul class="wall_messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
+                        
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+    
+                <p class="note">Quotable Quotes:</p>
+                
+                <div class="quotes">
+                {% for quote in quotes %}
+
+                    <h4> {{ quote.author }}: {{ quote.message }} - {{quote.created_at}} </h4>
+                    <a href="/users/{{quote.user.id}}">Posted by: {{quote.user.first_name}}</a><br>
+                    <a href="/favorite/{{quote.id}}">Add To Favorites</a><br><br>
+                    <hr>
+
+                {% endfor %}
+                </div>
+
+        </div>
+
+        <div class="box">
+    
+                <p class="note">Your Favorites:</p>
+
+                {% for favorite in favorites %}
+                    {% if favorite.user.id == request.session.id %}
+
+                    <h4> {{favorite.quote.author}}: {{favorite.quote.message}}</h4>
+                    <hr>
+                    <a href="/users/{{user.id}}">Posted by: {{favorite.quote.user.first_name}}</a><br>
+                    <a href="remove/{{favorite.id}}">Remove From My List</a>
+                    {% endif %}
+                {% endfor %}
+
+
+        </div>
+
+    </div>
+
+
+</body>
+</html>

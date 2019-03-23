@@ -1,0 +1,79 @@
+/* * { border: 1px solid black; } */
+
+body{
+    margin: auto;
+    padding: 20px;
+    width: 1400px;
+    min-height: auto;
+    text-align: center;
+    background-color: teal;
+}
+
+.top{
+    padding: 20px;
+    text-align: center;
+    border-bottom-style: solid;
+    width: 1140px;
+    margin: 0 0 0px -15px;
+    background-color: darkslategrey;
+}
+
+.wall_messages{
+    color: red;
+}
+
+.container{
+    background-color: antiquewhite;
+    height: 1000px;
+    overflow: scroll;
+    background-color: navajowhite;
+    border-style: solid;
+}
+
+.welcome{
+    color: white;
+}
+
+.log_out{
+    color: white;
+    margin: 0 0 0 1000px;
+    text-decoration: underline;
+}
+.delete{
+    border-style: solid;
+    margin: 0 0 0 856px;
+}
+.delete_quote{
+    border-style: solid;
+    font-size: 15px;
+    margin: 0 0 0 273px;
+}
+.note{
+    font-weight: bold;
+    display: inline-block;
+}
+.box{
+    padding: 20px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    background-color: antiquewhite;
+    text-align: left;
+    display: inline-block;
+    width: 549px;
+    vertical-align: top;
+}
+
+h2{
+    color: whitesmoke;
+}
+
+h4{
+    border-style: solid;
+    padding: 10px;
+}
+
+h5{
+    color: antiquewhite;
+    margin: 0 0 8px -109px;
+}
